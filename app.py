@@ -3,7 +3,6 @@ import joblib
 import numpy as np
 import pandas as pd
 
-# Load saved files
 model = joblib.load("model.pkl")
 encoders = joblib.load("encoders.pkl")
 features = joblib.load("features.pkl")
@@ -13,7 +12,6 @@ st.set_page_config(page_title="Uber/Ola Fare Prediction", layout="centered")
 st.title("🚖 Uber / Ola Fare Prediction")
 st.write("Enter trip details to predict estimated fare.")
 
-# Input fields
 pickup_latitude = st.number_input("Pickup Latitude", value=17.3850, format="%.6f")
 pickup_longitude = st.number_input("Pickup Longitude", value=78.4867, format="%.6f")
 
@@ -35,10 +33,8 @@ demand_level = st.selectbox("Demand Level", ["Low", "Medium", "High"])
 ride_category = st.selectbox("Ride Category", ["Mini", "Prime", "Sedan", "SUV"])
 weather = st.selectbox("Weather", ["Clear", "Rain", "Fog"])
 
-# Predict button
 if st.button("Predict Fare"):
 
-    # Convert text inputs using encoders
     input_dict = {
         "pickup_latitude": pickup_latitude,
         "pickup_longitude": pickup_longitude,
